@@ -1,0 +1,29 @@
+.bton {
+    background-image: linear-gradient(90deg, #19D3AF, #0FCFEA);
+    border: none;
+    padding: 10px 30px;
+    color: white;
+    border-radius: 10px;
+}
+
+.card:hover .img-fluid {
+    opacity: 0.5;
+}
+
+.card:hover .card-footer {
+    transition: .5s ease;
+    opacity: 1;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* -ms-transform: translate(-50%, -50%); */
+}
+
+.card:hover .bton {
+    background-image: linear-gradient(90deg, #2532f0, #4c51eb);
+    border: none;
+    padding: 10px 30px;
+    color: white;
+    border-radius: 10px;
+}
