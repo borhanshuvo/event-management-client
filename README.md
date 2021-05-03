@@ -1,5 +1,5 @@
 EVENT MANAGEMENT
 
-In may home page there are six section. Service and review section are dynamic. Admin user create service and manage service(delete only).If admin want then add another admin user. Admin can change the user order service status. Normal user click a service from home page if user not login then firstly login with google account. Then order that service with payment by credit card using stripe. Normal user can also see ther product status. They can also give review with rating. 
+Event Management is a event booking web application. There are two type of user. One is 'Admin' who can create event service, manage event service and also can add another admin. Another one is 'Customer' who can book any event including payment using Stripe online payment process. Customer can see order status and give review with rating.
 
 live site link : https://event-management-em.web.app/
