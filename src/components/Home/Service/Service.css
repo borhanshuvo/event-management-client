@@ -24,11 +24,11 @@
     border-radius: 10px;
 } */
 
-.img-fluid:hover card-footer {
-    display: none;
-}
+/* .img-fluid:hover {
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+} */
 
-.card-header {
+/* .card-header {
     border: none;
     padding: 0px;
     margin: 0px;
@@ -52,4 +52,4 @@
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} */

@@ -33,7 +33,6 @@ const Service = () => {
                             <div className="card">
                                 <div className="card-header">
                                 <img src={`data:image/png;base64,${service.image.img}`} style={{ width: '100%', height: '200px' }} className="img-fluid" alt="" />
-                                <span className="btnHover"><button className="btonn">Book Now</button></span>
                                 </div>
                                 <div className="card-body text-center style={{ height: '200px' }}">
                                     <h3 className="card-title" style={headingColor}>{service.title}</h3>
