@@ -8,7 +8,7 @@ const Review = () => {
     const [newRating, setNewRating] = useState('');
 
     const handelRating = (e) => {
-        const rating = e.target.value;
+        const rating = e.target.value || 5;
         setNewRating(rating);
     }
 
@@ -34,7 +34,7 @@ const Review = () => {
     return (
         <div className="ps-4">
             <h4 className="pt-3 pb-5" style={headingColor}>Review</h4>
-            <div className="card" style={{ width: '70%' }}>
+            <div className="card" style={{ width: '95%' }}>
                 <div className="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>
 

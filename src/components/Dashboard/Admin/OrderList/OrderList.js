@@ -54,7 +54,7 @@ const OrderList = () => {
             {loadData.email &&
                 <div className="ps-3">
                     <h4 className="pt-3 pb-5 ps-3" style={headingColor}>Edit Status</h4>
-                    <div className="card" style={{ width: '70%' }}>
+                    <div className="card" style={{ width: '95%' }}>
                         <div className="card-body">
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="form-group pb-3">
@@ -110,6 +110,11 @@ const OrderList = () => {
                                         </form> */}
                                         </tr>
                                     ))
+                                }
+                                {bookings.length === 0 &&
+                                    <div>
+                                        <h6 className="pt-5 text-center">Booking List Empty</h6>
+                                    </div>
                                 }
                             </tbody>
                         </table>

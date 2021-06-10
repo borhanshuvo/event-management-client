@@ -29,28 +29,30 @@ const ManageService = () => {
         <div>
             <h4 className="pt-3 pb-5 ps-3" style={headingColor}>Manage Service</h4>
             <div className="container">
-                <table className="table text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">Event Title</th>
-                            <th scope="col">Event Description</th>
-                            <th scope="col">Event Price</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            services.map(service => (
-                                <tr key={service._id}>
-                                    <td>{service.title}</td>
-                                    <td>{service.description}</td>
-                                    <td>{service.price}</td>
-                                    <td><button style={{ border: 'none' }} onClick={() => deleteService(service._id)}><FontAwesomeIcon style={{ color: 'red' }} icon={faTrash} /></button></td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
+                <div className="table-responsive">
+                    <table className="table text-center table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">Event Title</th>
+                                <th scope="col">Event Description</th>
+                                <th scope="col">Event Price</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                services.map(service => (
+                                    <tr key={service._id}>
+                                        <td>{service.title}</td>
+                                        <td>{service.description}</td>
+                                        <td>{service.price}</td>
+                                        <td><button style={{ border: 'none' }} onClick={() => deleteService(service._id)}><FontAwesomeIcon style={{ color: 'red' }} icon={faTrash} /></button></td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );

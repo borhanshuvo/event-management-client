@@ -22,12 +22,12 @@ const BookingList = () => {
 
     return (
         <div className="ps-4">
-            <h4 className="pt-3 pb-5" style={headingColor}>Booking List</h4>
+            <h4 className="pt-3 pb-5 ps-2" style={headingColor}>Booking List</h4>
             <div className="container">
                 <div className="row">
                     {
                         bookings.map(booking =>
-                            <div key={booking._id} className="col-md-6 pb-3">
+                            <div key={booking._id} className="col-md-6 pb-3 ps-0">
                                 <div className="card" style={{width: '60%'}}>
                                     <div className="card-header d-flex justify-content-between">
                                         <span style={{ padding: '5px' }}>Price : {booking.bookingData.price}</span>
@@ -40,6 +40,11 @@ const BookingList = () => {
                                 </div>
                             </div>
                         )
+                    }
+                    {bookings.length === 0 &&
+                        <div>
+                            <h6 className="pt-5 text-center">You haven't booked any services yet.</h6>
+                        </div>
                     }
                 </div>
             </div>

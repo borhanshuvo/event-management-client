@@ -7,7 +7,7 @@ import { UserContext } from '../../../App';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import MakeAdmin from '../../Dashboard/Admin/MakeAdmin/MakeAdmin';
+import './Login.css';
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -79,7 +79,7 @@ const Login = () => {
             <Navbar></Navbar>
             <div className="container">
                 <div className="row mt-5">
-                    <div style={{ width: '40%', border: '1px solid black', padding: '20px', margin: 'auto' }}>
+                    <div className="login-style">
                         <h4 className="text-center">{newUser ? 'Registration' : 'Login'}</h4>
                         <br />
                         {

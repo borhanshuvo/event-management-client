@@ -37,16 +37,16 @@ const Booking = () => {
         };
 
         fetch('https://rocky-plains-06049.herokuapp.com/addBooking', {
-            method: 'POST', 
+            method: 'POST',
             headers: {
-              'content-type': 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(bookingDetails)
-          })
-        .then(res=>res.json())
-        .then(result=>{
-           
         })
+            .then(res => res.json())
+            .then(result => {
+
+            })
     }
 
     const headingColor = { color: '#3A4256' };
@@ -54,7 +54,7 @@ const Booking = () => {
         <div className="ps-4">
             <div style={{ display: bookingData ? 'none' : 'block' }}>
                 <h4 className="pt-3 pb-5" style={headingColor}>Booking</h4>
-                <div className="card" style={{ width: '70%' }}>
+                <div className="card" style={{ width: '95%' }}>
                     <div className="card-body">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-group pb-3">
@@ -89,7 +89,7 @@ const Booking = () => {
             </div>
             <div style={{ display: bookingData ? 'block' : 'none' }}>
                 <h4 className="pt-3 pb-5" style={headingColor}>Payment</h4>
-                <div className="card" style={{ width: '70%' }}>
+                <div className="card" style={{ width: '95%' }}>
                     <div className="card-body">
                         <div className="form-group pb-3">
                             <label htmlFor="" className="pb-3">Payment</label>

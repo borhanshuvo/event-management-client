@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-light bg-light pt-5 pb-5">
-                <div className="container-fluid">
+                <div className="container-fluid ">
                     <Link className="navbar-brand ps-5" to="/"><img src={logo} style={{width: '100px'}} alt=""/><b>EVENT MANAGEMENT</b></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -18,13 +18,13 @@ const Navbar = () => {
                                     <Link className="nav-link text-uppercase fs-5" aria-current="page" to="/">Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link text-uppercase fs-5" aria-current="page" to="/">About us</Link>
+                                    <a className="nav-link text-uppercase fs-5" aria-current="page" href="#service">Service</a>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link text-uppercase fs-5" aria-current="page" to="/">Project</Link>
+                                    <a className="nav-link text-uppercase fs-5" aria-current="page" href="#review">Customer Review</a>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link text-uppercase fs-5" aria-current="page" to="/">Contact</Link>
+                                    <a className="nav-link text-uppercase fs-5" aria-current="page" href="#contact_us">Contact</a>
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link text-uppercase fs-5" aria-current="page" to="/dashboard">Dashboard</Link>

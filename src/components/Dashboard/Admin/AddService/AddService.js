@@ -41,7 +41,7 @@ const AddService = () => {
     return (
         <div className="ps-3">
             <h4 className="ps-2 pt-3 pb-5" style={headingColor}>Add Service</h4>
-            <div className="card" style={{ width: '90%' }}>
+            <div className="card" style={{ width: '95%' }}>
                 <div className="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group pb-3">

@@ -24,7 +24,13 @@
     border-radius: 10px;
 } */
 
-.img-fluid:hover {
+.card-style:hover{
+    transform: scale(1.1);
+    box-shadow: 0 10px 10px 10px rgba(31, 31, 31, 0.5);
+    transition: all 0.3s ease;
+}
+
+.card-style:hover .image{
     transform: scale(1.1);
 }
 

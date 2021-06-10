@@ -13,7 +13,7 @@ const Review = () => {
     const textColor = { color: '#3A3056' };
 
     return (
-        <div className="bg-light pt-5">
+        <div id="review" className="bg-light pt-5">
             <div className="container pt-5 pb-">
                 <div className="row pb-5">
                     <h4 className="text-center pb-3" style={textColor}><u>Reviews</u></h4>

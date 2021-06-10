@@ -22,7 +22,7 @@ const Service = () => {
     const textColor = { color: '#3A3056' };
 
     return (
-        <div className="container pt-5 pb-5">
+        <div id="service" className="container pt-5 pb-5">
             <div className="row pt-5 pb-5">
                 <h4 className="text-center pb-3" style={textColor}><u>Services</u></h4>
                 <h1 className="text-center pb-3" style={headingColor}>You have an event to plan and <br /> we have the solutions</h1>
@@ -30,9 +30,9 @@ const Service = () => {
                 {
                     services.map(service =>
                         <div key={service._id} className="col-md-4 pb-3">
-                            <div className="card">
+                            <div className="card card-style">
                                 <div className="card-header">
-                                <img src={`data:image/png;base64,${service.image.img}`} style={{ width: '100%', height: '200px' }} className="img-fluid" alt="" />
+                                <img src={`data:image/png;base64,${service.image.img}`} style={{ width: '100%', height: '200px' }} className="img-fluid image" alt="" />
                                 </div>
                                 <div className="card-body text-center style={{ height: '200px' }}">
                                     <h3 className="card-title" style={headingColor}>{service.title}</h3>

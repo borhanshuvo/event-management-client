@@ -6,7 +6,7 @@ const Contact = () => {
     const textColor = { color: '#3A3056' };
     const btnDesign = { width: '30%', backgroundImage: 'linear-gradient(90deg, #19D3AF, #0FCFEA)', border: 'none', padding: '10px', color: 'white', borderRadius: '10px' };
     return (
-        <div className="bg-light pb-5 pt-5">
+        <div id="contact_us" className="bg-light pb-5 pt-5">
             <h4 className="text-center pt-5 pb-2" style={textColor}><u>Contact Us</u></h4>
             <h1 className="text-center pb-5" style={headingColor}>Always Connect with us</h1>
             <div className="pb-5">

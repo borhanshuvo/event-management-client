@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import './MakeAdmin.css';
 
 const MakeAdmin = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -25,7 +26,7 @@ const MakeAdmin = () => {
     return (
         <div className="ps-3">
             <h4 className="ps-2 pt-3 pb-5" style={headingColor}>Add Admin</h4>
-            <div className="card" style={{ width: '70%' }}>
+            <div className="card make-admin-card-style">
                 <div className="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group pb-3">
