@@ -24,9 +24,9 @@
     border-radius: 10px;
 } */
 
-/* .img-fluid:hover {
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-} */
+.img-fluid:hover {
+    transform: scale(1.1);
+}
 
 /* .card-header {
     border: none;
