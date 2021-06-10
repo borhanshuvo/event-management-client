@@ -17,6 +17,15 @@ else {
 
 const Login = () => {
     const [newUser, setNewUser] = useState(false);
+    const [user, setUser] = useState({
+        isSignedIn: false,
+        displayName: '',
+        email: '',
+        password: '',
+        photo: '',
+        error: '',
+        success: false
+    });
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
@@ -50,6 +59,48 @@ const Login = () => {
             // Handle error
         });
     }
+
+    const handelBlur = (event) => {
+        let isInputValid = true;
+        if (event.target.name === 'email') {
+            isInputValid = /\S+@\S+\.\S+/.test(event.target.value);
+        }
+        if (event.target.name === 'password') {
+            const isPasswordValid = event.target.value.length > 8;
+            const passwordHasNumber = /\d{1}/.test(event.target.value);
+            isInputValid = isPasswordValid && passwordHasNumber;
+        }
+        if (isInputValid) {
+            const newUserInfo = { ...user }
+            newUserInfo[event.target.name] = event.target.value;
+            setUser(newUserInfo);
+        }
+    }
+
+    const handelSubmit = (event) => {
+
+        if (!newUser && user.email && user.password) {
+            firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+                .then(res => {
+                    const newUserInfo = { ...user, res };
+                    newUserInfo.error = '';
+                    newUserInfo.success = true;
+                    setUser(newUserInfo);
+                    setLoggedInUser(newUserInfo);
+                    history.replace(from);
+                })
+                .catch((error) => {
+                    const newUserInfo = { ...user };
+                    newUserInfo.error = error.message;
+                    newUserInfo.success = false;
+                    setUser(newUserInfo);
+                    setLoggedInUser(newUserInfo);
+                    history.replace(from);
+                });
+        }
+        event.preventDefault();
+    }
+
     return (
         <div>
             <Navbar></Navbar>
@@ -58,25 +109,25 @@ const Login = () => {
                     <div style={{ width: '40%', border: '1px solid black', padding: '20px', margin: 'auto' }}>
                         <h4 className="text-center">{newUser ? 'Registration' : 'Login'}</h4>
                         <br />
-                        <form>
+                        <form onSubmit={handelSubmit}>
                             {newUser &&
                                 <div className="mb-3">
                                     <label className="form-label">Name</label>
-                                    <input type="text" name="displayName" className="form-control" />
+                                    <input type="text" name="displayName" onBlur={handelBlur} className="form-control" />
                                 </div>
                             }
                             <div className="mb-3">
                                 <label className="form-label">Email address</label>
-                                <input type="text" name="email" className="form-control" />
+                                <input type="text" name="email" onBlur={handelBlur} className="form-control" />
                             </div>
                             <div className="mb-3">
                                 <label className="form-label">Password</label>
-                                <input type="password" name="password" className="form-control" />
+                                <input type="password" name="password" onBlur={handelBlur} className="form-control" />
                             </div>
                             {newUser &&
                                 <div className="mb-3">
                                     <label className="form-label">Confirm Password</label>
-                                    <input type="password" name="rePassword" className="form-control" />
+                                    <input type="password" name="rePassword" onBlur={handelBlur} className="form-control" />
                                 </div>
                             }
                             <br />
@@ -88,7 +139,7 @@ const Login = () => {
                     <div className="text-center mt-4 mb-5" style={{ margin: 'auto' }}>
                         <p>----------Or----------</p>
                         <button onClick={googleSignIn} style={{ borderRadius: '10px', width: '30%', border: '1px solid gray' }}>
-                            <span className="pe-2"><FontAwesomeIcon style={{color: 'blue'}} icon={faGoogle} /> </span>
+                            <span className="pe-2"><FontAwesomeIcon style={{ color: 'blue' }} icon={faGoogle} /> </span>
                             <span>Continue with Google</span>
                         </button>
                     </div>
