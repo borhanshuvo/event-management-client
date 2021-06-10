@@ -53,7 +53,7 @@ const Review = () => {
                         <div className="form-group pb-3">
                             <label htmlFor="rating" className="pb-2">Rating</label>
                             <select name="rating" id="rating" className="form-control" onChange={handelRating}>
-                                <option selected value="">Please Give Rating</option>
+                                <option value="5">Please Give Rating</option>
                                 <option value="5">5</option>
                                 <option value="4">4</option>
                                 <option value="3">3</option>

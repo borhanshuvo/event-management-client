@@ -3,7 +3,7 @@ import React from 'react';
 
 const InformationCol = (props) => {
     return (
-        <div className="col-md-3 text-center">
+        <div className="col-md-3 text-center pb-3">
             <div className="card">
                 <img src={props.menuImg} className="m-auto" style={{width: '80px', padding: '10px 0px'}} alt=""/>
                 <div className="card-body">

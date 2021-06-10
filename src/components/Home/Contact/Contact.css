@@ -1,0 +1,23 @@
+@media screen and (max-width: 600px){
+    .card-width{
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .card-width{
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .card-width{
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .card-width{
+        width: 50%;
+    }
+}

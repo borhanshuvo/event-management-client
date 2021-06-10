@@ -1,4 +1,5 @@
 import React from 'react';
+import './Contact.css';
 
 const Contact = () => {
     const headingColor = { color: '#3A4256' };
@@ -9,7 +10,7 @@ const Contact = () => {
             <h4 className="text-center pt-5 pb-2" style={textColor}><u>Contact Us</u></h4>
             <h1 className="text-center pb-5" style={headingColor}>Always Connect with us</h1>
             <div className="pb-5">
-                <div className="card m-auto" style={{ width: '50%' }}>
+                <div className="card m-auto card-width">
                     <form>
                         <div className="card-body">
                             <div class="mb-3">

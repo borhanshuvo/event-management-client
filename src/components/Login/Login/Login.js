@@ -7,6 +7,7 @@ import { UserContext } from '../../../App';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import MakeAdmin from '../../Dashboard/Admin/MakeAdmin/MakeAdmin';
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -26,6 +27,7 @@ const Login = () => {
         error: '',
         success: false
     });
+
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
@@ -60,44 +62,15 @@ const Login = () => {
         });
     }
 
-    const handelBlur = (event) => {
-        let isInputValid = true;
-        if (event.target.name === 'email') {
-            isInputValid = /\S+@\S+\.\S+/.test(event.target.value);
-        }
-        if (event.target.name === 'password') {
-            const isPasswordValid = event.target.value.length > 8;
-            const passwordHasNumber = /\d{1}/.test(event.target.value);
-            isInputValid = isPasswordValid && passwordHasNumber;
-        }
-        if (isInputValid) {
-            const newUserInfo = { ...user }
-            newUserInfo[event.target.name] = event.target.value;
-            setUser(newUserInfo);
-        }
-    }
-
     const handelSubmit = (event) => {
 
-        if (!newUser && user.email && user.password) {
-            firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-                .then(res => {
-                    const newUserInfo = { ...user, res };
-                    newUserInfo.error = '';
-                    newUserInfo.success = true;
-                    setUser(newUserInfo);
-                    setLoggedInUser(newUserInfo);
-                    history.replace(from);
-                })
-                .catch((error) => {
-                    const newUserInfo = { ...user };
-                    newUserInfo.error = error.message;
-                    newUserInfo.success = false;
-                    setUser(newUserInfo);
-                    setLoggedInUser(newUserInfo);
-                    history.replace(from);
-                });
+        const signedInUser = {
+            isSignedIn: true,
+            displayName: 'Admin',
+            email: 'test@admin.com'
         }
+        setLoggedInUser(signedInUser);
+        history.replace(from);
         event.preventDefault();
     }
 
@@ -109,30 +82,52 @@ const Login = () => {
                     <div style={{ width: '40%', border: '1px solid black', padding: '20px', margin: 'auto' }}>
                         <h4 className="text-center">{newUser ? 'Registration' : 'Login'}</h4>
                         <br />
-                        <form onSubmit={handelSubmit}>
-                            {newUser &&
+                        {
+                            !newUser &&
+                            <form onSubmit={handelSubmit}>
+
+                                <div className="mb-3">
+                                    <label className="form-label">Email address</label>
+                                    <input type="text" name="email" autoComplete="off" value="test@admin.com" className="form-control" />
+                                </div>
+
+                                <div className="mb-3">
+                                    <label className="form-label">Password</label>
+                                    <input type="password" name="password" autoComplete="off" value="12345678" className="form-control" />
+                                </div>
+
+                                <input type="submit" className="btn btn-primary form-control" value='Sign in' />
+
+                            </form>
+                        }
+                        {
+                            newUser &&
+                            <form onSubmit={handelSubmit}>
+
                                 <div className="mb-3">
                                     <label className="form-label">Name</label>
-                                    <input type="text" name="displayName" onBlur={handelBlur} className="form-control" />
+                                    <input type="text" name="displayName" autoComplete="off" className="form-control" />
                                 </div>
-                            }
-                            <div className="mb-3">
-                                <label className="form-label">Email address</label>
-                                <input type="text" name="email" onBlur={handelBlur} className="form-control" />
-                            </div>
-                            <div className="mb-3">
-                                <label className="form-label">Password</label>
-                                <input type="password" name="password" onBlur={handelBlur} className="form-control" />
-                            </div>
-                            {newUser &&
+
+                                <div className="mb-3">
+                                    <label className="form-label">Email address</label>
+                                    <input type="text" name="email" autoComplete="off" className="form-control" />
+                                </div>
+
+                                <div className="mb-3">
+                                    <label className="form-label">Password</label>
+                                    <input type="password" name="password" autoComplete="off" className="form-control" />
+                                </div>
+
                                 <div className="mb-3">
                                     <label className="form-label">Confirm Password</label>
-                                    <input type="password" name="rePassword" onBlur={handelBlur} className="form-control" />
+                                    <input type="password" name="rePassword" className="form-control" />
                                 </div>
-                            }
-                            <br />
-                            <input type="submit" className="btn btn-primary form-control" value={newUser ? 'Sign up' : 'Sign in'} />
-                        </form>
+
+                                <input type="submit" className="btn btn-primary form-control" value='Sign up' />
+
+                            </form>
+                        }
                         <br />
                         <p className="text-center">{newUser ? 'Already have an Account?' : "Don't have account?"}<button name="newUser" onClick={() => setNewUser(!newUser)} style={{ border: "none", backgroundColor: "white", color: "blue" }}>{newUser ? 'Login' : 'Create a new Account'}</button></p>
                     </div>
