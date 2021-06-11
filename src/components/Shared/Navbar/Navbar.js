@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../images/event_logo.png';
+import './Navbar.css';
 
 const Navbar = () => {
     return (
-        <header>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light pt-5 pb-5">
+        <header className="pb-5">
+            {/* <nav className="navbar navbar-expand-lg navbar-light bg-light pt-5 pb-5">
                 <div className="container-fluid ">
                     <Link className="navbar-brand ps-5" to="/"><img src={logo} style={{width: '100px'}} alt=""/><b>EVENT MANAGEMENT</b></Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +35,36 @@ const Navbar = () => {
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+            </nav> */}
+            <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <Link className="navbar-brand" to="/"><img src={logo} className="image-fluid" alt="" /><b>EVENT MANAGEMENT</b></Link>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <div class="mx-auto"></div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <Link className="nav-link text-uppercase fs-5" to="/">Home</Link>
+                            </li>
+                            <li class="nav-item">
+                                <a className="nav-link text-uppercase fs-5" href="#service">Service</a>
+                            </li>
+                            <li class="nav-item">
+                                <a className="nav-link text-uppercase fs-5" href="#review">Customer Review</a>
+                            </li>
+                            <li class="nav-item">
+                                <a className="nav-link text-uppercase fs-5" href="#contact_us">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <Link className="nav-link text-uppercase fs-5" to="/dashboard">Dashboard</Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link className="nav-link text-uppercase fs-5" to="/login">Login</Link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>

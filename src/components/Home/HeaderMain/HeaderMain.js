@@ -7,8 +7,8 @@ const HeaderMain = () => {
     const headingColor = { color: '#3A4256' };
     const textColor = { color: '#3A3056' };
     return (
-        <main className="bg-light pb-5">
-            <div className="container">
+        <main className="bg-light pb-5 pt-5">
+            <div className="container pt-5">
                 <div className="row">
                     <div className="col-md-6 pb-5">
                         <div className="pt-5">

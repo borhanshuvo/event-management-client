@@ -77,7 +77,7 @@ const Login = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="container">
+            <div className="container pt-5 mt-5">
                 <div className="row mt-5">
                     <div className="login-style">
                         <h4 className="text-center">{newUser ? 'Registration' : 'Login'}</h4>
