@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
+import toast from 'react-hot-toast';
 
 const AddService = () => {
     const [info, setInfo] = useState({});
@@ -16,6 +18,7 @@ const AddService = () => {
         setFile(newFile);
     }
     const onSubmit = (data, e) => {
+        const loading = toast.loading('Please wait...!');
         const formData = new FormData();
         formData.append('file', file);
         formData.append('title', info.title);
@@ -28,12 +31,15 @@ const AddService = () => {
         })
             .then(response => response.json())
             .then(result => {
-                if(result){
+                if (result) {
                     e.target.reset();
+                    return swal("Service Added", "Service has been added successful.", "success");
                 }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
             .catch(error => {
-                console.error(error)
+                toast.dismiss(loading);
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
     }
 

@@ -8,6 +8,7 @@ import Navbar from '../../Shared/Navbar/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import './Login.css';
+import infoEmoji from '../../../images/info-emoji.svg';
 
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -29,6 +30,7 @@ const Login = () => {
     });
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [show, setShow] = useState('block');
     const history = useHistory();
     const location = useLocation();
     let { from } = location.state || { from: { pathname: '/' } };
@@ -80,6 +82,26 @@ const Login = () => {
             <div className="container pt-5 mt-5">
                 <div className="row mt-5">
                     <div className="login-style">
+                        <div style={{display: show}} className="card pb-2">
+                            <div className="d-flex justify-content-between pb-2">
+                                <strong><img src={infoEmoji} className="rounded me-2" alt="" />Important Information</strong>
+                                <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close" onClick={() => setShow('none')}></button>
+                            </div>
+                            <div className="text-center">
+                                <span>For Admin click on Sign in button.</span><br />
+                                <span>For Customer click on Continue with Google button.</span>
+                            </div>
+                        </div>
+                        {/* <div className="toast" role="alert" aria-live="assertive" aria-atomic="true" onClose={() => setShow(false)} show={show} delay={5000}>
+                            <div className="toast-header">
+                                <img src={infoEmoji} className="rounded me-2" alt="" />
+                                <strong className="me-auto">Important Info</strong>
+                                <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close" onClose={() => setShow(true)}></button>
+                            </div>
+                            <div className="toast-body">
+                                Use this email to see all admin features.
+                            </div>
+                        </div> */}
                         <h4 className="text-center">{newUser ? 'Registration' : 'Login'}</h4>
                         <br />
                         {

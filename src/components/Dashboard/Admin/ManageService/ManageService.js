@@ -1,6 +1,8 @@
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
+import swal from 'sweetalert';
+import toast from 'react-hot-toast';
 
 const ManageService = () => {
     const [services, setServices] = useState([]);
@@ -12,6 +14,8 @@ const ManageService = () => {
     }, []);
 
     const deleteService = (id) => {
+        const loading = toast.loading('Please wait...!');
+
         fetch(`https://rocky-plains-06049.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
@@ -20,7 +24,13 @@ const ManageService = () => {
                 if (result) {
                     const newService = services.filter(service => service._id !== id);
                     setServices(newService);
+                    return swal("Services deleted ", "Services deleted successfully", "success");
                 }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+            })
+            .catch(error => {
+                toast.dismiss(loading);
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
     }
 

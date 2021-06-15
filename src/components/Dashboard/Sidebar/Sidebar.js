@@ -33,7 +33,7 @@ const Sidebar = () => {
                     <Link style={textColor} className="nav-link" to="/dashboard/addService"><FontAwesomeIcon icon={faPlus} /> Add Service</Link>
                     <Link style={textColor} className="nav-link" to="/dashboard/addAdmin"><FontAwesomeIcon icon={faUserPlus} /> Make Admin</Link>
                     <Link style={textColor} className="nav-link" to="/dashboard/manageService"><FontAwesomeIcon icon={faTasks} /> Manage Service</Link>
-                    <span className="ps-2"><button style={{border: 'none', backgroundColor: 'white'}} onClick={()=>setLoggedInUser({})}><FontAwesomeIcon icon={faSignOutAlt} />Logout</button></span>
+                    <span className="ps-2"><button style={{border: 'none', backgroundColor: 'white'}} onClick={()=>setLoggedInUser({})}><FontAwesomeIcon icon={faSignOutAlt} /><span className="ps-1">Logout</span></button></span>
                 </div>
             }
             {!isAdmin &&
@@ -41,7 +41,7 @@ const Sidebar = () => {
                     {/* <Link style={textColor} className="nav-link" to="/dashboard/book"><FontAwesomeIcon icon={faCartPlus} /> Booking</Link> */}
                     <Link style={textColor} className="nav-link" to="/dashboard/bookingList"><FontAwesomeIcon icon={faList} /> Booking List</Link>
                     <Link style={textColor} className="nav-link" to="/dashboard/review"><FontAwesomeIcon icon={faCommentAlt} /> Review</Link>
-                    <span className="ps-2"><button style={{border: 'none', backgroundColor: 'white'}} onClick={()=>setLoggedInUser({})}><FontAwesomeIcon icon={faSignOutAlt} />Logout</button></span>
+                    <span className="ps-2"><button style={{border: 'none', backgroundColor: 'white'}} onClick={()=>setLoggedInUser({})}><FontAwesomeIcon icon={faSignOutAlt} /><span className="ps-1">Logout</span></button></span>
                 </div>
             }
         </div>

@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../../../App';
+import swal from 'sweetalert';
+import toast from 'react-hot-toast';
 
 const Review = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,6 +15,7 @@ const Review = () => {
     }
 
     const onSubmit = (data, e) => {
+        const loading = toast.loading('Please wait...!');
         data.created = new Date();
         data.rating = newRating;
 
@@ -27,7 +30,13 @@ const Review = () => {
             .then(result => {
                 if (result) {
                     e.target.reset();
+                    return swal("Review", "Review add successfully.", "success");
                 }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+            })
+            .catch(error => {
+                toast.dismiss(loading);
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
     }
     const headingColor = { color: '#3A4256' };

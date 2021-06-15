@@ -1,25 +1,35 @@
 import { useForm } from 'react-hook-form';
 import './MakeAdmin.css';
+import swal from 'sweetalert';
+import toast from 'react-hot-toast';
 
 const MakeAdmin = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data, e) => {
+        const loading = toast.loading('Please wait...!');
         data.created = new Date();
 
         fetch('https://rocky-plains-06049.herokuapp.com/addAdmin', {
-            method: 'POST', 
+            method: 'POST',
             headers: {
-              'content-type': 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(data)
-          })
-        .then(res=>res.json())
-        .then(result=>{
-            if(result){
-                e.target.reset();
-            }
         })
+            .then(res => res.json())
+            .then(result => {
+                toast.dismiss(loading);
+                if (result) {
+                    e.target.reset();
+                    return swal("Admin Added", "Admin has been added successful.", "success");
+                }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+            })
+            .catch(error => {
+                toast.dismiss(loading);
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
+            })
     }
 
     const headingColor = { color: '#3A4256' };
