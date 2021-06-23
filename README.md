@@ -1,7 +1,4 @@
- [LIVE SITE](https://event-management-em.web.app/)
- <p>
- <a href="https://event-management-em.web.app" target="_blank">LIVE SITE</a>
-</p>
+ [LIVE SITE](https://event-management-em.web.app/){:target="_blank"}
  
 EVENT MANAGEMENT
 
