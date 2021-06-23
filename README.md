@@ -1,4 +1,4 @@
- [LIVE SITE](https://event-management-em.web.app/){:target="_blank"}
+ [LIVE SITE](https://event-management-em.web.app/){:target="_blank" rel="noopener"}
  
 EVENT MANAGEMENT
 
