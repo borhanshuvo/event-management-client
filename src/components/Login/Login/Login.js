@@ -48,11 +48,11 @@ const Login = () => {
                 }
                 setLoggedInUser(signedInUser);
                 storeAuthToken();
-                history.replace(from);
+                // history.replace(from);
+                history.push('/dashboard');
             })
             .catch(err => {
                 const errorMessage = err.message;
-                console.log(errorMessage);
             })
     }
 
@@ -72,7 +72,8 @@ const Login = () => {
             email: 'test@admin.com'
         }
         setLoggedInUser(signedInUser);
-        history.replace(from);
+        // history.replace(from);
+        history.push('/dashboard');
         event.preventDefault();
     }
 
