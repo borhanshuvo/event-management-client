@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import swal from 'sweetalert';
 import toast from 'react-hot-toast';
+import swal from 'sweetalert';
 
 const AddService = () => {
     const [info, setInfo] = useState({});
