@@ -1,24 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import { useHistory } from "react-router";
 import SkeletonCard from "../../Skeleton/SkeletonCard";
 import "./Service.css";
 
 const Service = () => {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(async () => {
-      await fetch("https://rocky-plains-06049.herokuapp.com/serviceList")
-        .then((res) => res.json())
-        .then((data) => {
-          setServices(data);
-          setLoading(false);
-        });
-    }, 5000);
-  }, []);
+  const { data, isLoading } = useQuery("services", () =>
+    fetch("https://rocky-plains-06049.herokuapp.com/serviceList").then((res) =>
+      res.json()
+    )
+  );
+
+  if (isLoading)
+    return (
+      <>
+        <div className="d-flex justify-content-center">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div className="container">
+          <div className="row">
+            {[1, 2, 3].map((index) => (
+              <SkeletonCard key={index} />
+            ))}
+          </div>
+        </div>
+      </>
+    );
 
   const serviceId = (id) => {
     history.push(`dashboard/book/${id}`);
@@ -39,7 +50,7 @@ const Service = () => {
         <h5 className="text-center pb-5" style={textColor}>
           HERE IS HOW WE CAN HELP YOU
         </h5>
-        {services.map((service) => (
+        {data?.map((service) => (
           <div key={service._id} className="col-md-4 pb-3">
             <div className="card card-style">
               <div className="card-header">
@@ -69,14 +80,6 @@ const Service = () => {
             </div>
           </div>
         ))}
-        {loading && (
-          <div className="d-flex justify-content-center">
-            <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
-        )}
-        {loading && [1, 2, 3].map((index) => <SkeletonCard key={index} />)}
       </div>
     </div>
   );
