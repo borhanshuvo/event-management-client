@@ -13,24 +13,6 @@ const Service = () => {
     )
   );
 
-  if (isLoading)
-    return (
-      <>
-        <div className="d-flex justify-content-center">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-        </div>
-        <div className="container">
-          <div className="row">
-            {[1, 2, 3].map((index) => (
-              <SkeletonCard key={index} />
-            ))}
-          </div>
-        </div>
-      </>
-    );
-
   const serviceId = (id) => {
     history.push(`dashboard/book/${id}`);
   };
@@ -80,6 +62,18 @@ const Service = () => {
             </div>
           </div>
         ))}
+        {isLoading && (
+          <>
+            <div className="d-flex justify-content-center">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+            {[1, 2, 3].map((index) => (
+              <SkeletonCard key={index} />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
