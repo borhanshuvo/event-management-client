@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../../App";
 import logo from "../../../images/event_logo.png";
 import "./Navbar.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Navbar = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -55,7 +54,7 @@ const Navbar = () => {
                   Dashboard
                 </Link>
               </li>
-              {!loggedInUser.email ? (
+              {!loggedInUser?.email ? (
                 <li class="nav-item">
                   <Link className="nav-link text-uppercase fs-5" to="/login">
                     Login
@@ -66,7 +65,10 @@ const Navbar = () => {
                   <button
                     style={{ border: "none", backgroundColor: "white" }}
                     className="nav-link text-uppercase fs-5"
-                    onClick={() => setLoggedInUser({})}
+                    onClick={() => {
+                      setLoggedInUser({});
+                      localStorage.removeItem("userInfo");
+                    }}
                   >
                     <span className="ps-1">Logout</span>
                   </button>
